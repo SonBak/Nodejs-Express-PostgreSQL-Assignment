@@ -1,18 +1,21 @@
-CREATE TABLE user (
+CREATE TABLE players (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    email VARCHAR (50) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW()
+    join_date DATE DEFAULT NOW()
 );
 
-INSERT INTO user (name, email)
-VALUES 
-('TestUser_1', 'testuser1@gmail.com'),
-('TestUser_2', 'testuser2@gmail.com')
-
-CREATE TABLE athletes (
+CREATE TABLE games (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
-    sport VARCHAR(50),
-    age INT
+    title VARCHAR(50) NOT NULL,
+    genre VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE scores (
+    id SERIAL PRIMARY KEY,
+    player_id INT,
+    FOREIGN KEY (player_id) REFERENCES players(id),
+    game_id INT,
+    FOREIGN KEY (game_id) REFERENCES games(id),
+    score INT,
+    date_played DATE
 );
