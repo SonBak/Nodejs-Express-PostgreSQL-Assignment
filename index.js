@@ -41,9 +41,6 @@ const playersSchema = z.object({
 });
 
 app.use(express.json());
-// app.get("/", (req, res) => {
-//   res.send("Welcome to this NodeJS and PostgreSQL lesson.");
-// });
 
 app.get("/", async (req, res) => {
   try {
@@ -104,7 +101,6 @@ app.delete("/players/:id", async (req, res) => {
   }
 });
 
-// 1. List all players and their scores
 app.get("/players-scores", async (req, res) => {
   try {
     const result = await pool.query(`
@@ -119,7 +115,6 @@ app.get("/players-scores", async (req, res) => {
   }
 });
 
-// 2. Find high scores (top 3 players, total scores, descending order)
 app.get("/high-scores", async (req, res) => {
   try {
     const result = await pool.query(`
@@ -136,7 +131,6 @@ app.get("/high-scores", async (req, res) => {
   }
 });
 
-// 3. Players who didn't play any games
 app.get("/inactive-players", async (req, res) => {
   try {
     const result = await pool.query(`
@@ -151,7 +145,6 @@ app.get("/inactive-players", async (req, res) => {
   }
 });
 
-// 4. Find popular game genres
 app.get("/popular-genres", async (req, res) => {
   try {
     const result = await pool.query(`
@@ -168,7 +161,6 @@ app.get("/popular-genres", async (req, res) => {
   }
 });
 
-// 5. Recently joined players (last 30 days)
 app.get("/recent-players", async (req, res) => {
   try {
     const result = await pool.query(`
